@@ -1,16 +1,15 @@
- name: SonarQube Code Analysis
+name: SonarQube Code Analysis
 
 on:
   push:
     branches:
-      - master
+      - main
   pull_request:
     branches:
-      - master
+      - main
 
 jobs:
   sonarqube:
-    name: SonarQube Scan
     runs-on: ubuntu-latest
 
     steps:
@@ -36,7 +35,7 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
           sonar-scanner \
-            -Dsonar.projectKey=BaseMax \
+            -Dsonar.projectKey=SimpleFastPyAPI \
             -Dsonar.sources=. \
             -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }} \
             -Dsonar.login=${{ secrets.SONAR_TOKEN }}
