@@ -1,4 +1,4 @@
- name: SonarQube Code Analysis
+name: SonarQube Code Analysis
 
 on:
   push:
@@ -29,12 +29,10 @@ jobs:
           npm install -g sonar-scanner
 
       - name: Run SonarQube Scanner
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
           sonar-scanner \
             -Dsonar.projectKey=SimpleFastPyAPI \
             -Dsonar.sources=. \
             -Dsonar.host.url=http://3.110.51.134:9000 \
-            -Dsonar.login=$SONAR_TOKEN
+            -Dsonar.login=${{ secrets.SONAR_TOKEN }}
 
